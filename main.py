@@ -5,6 +5,7 @@ def fibGen(value):
     for i in range(value):
         yield fib(i)
 
+
 # Get Fibonacci number at value
 def fib(value):
     # Base case
@@ -12,12 +13,17 @@ def fib(value):
         return 0
     elif value == 1:
         return 1
-    
-    # General case
-    a = fib(value - 1)
-    b = fib(value - 2)
 
-    return a + b
+    # General case
+    i = 2  # i = 2 because the first 2 cases are special and are already handled by if-elif block
+    a, b = 0, 1
+
+    while i <= value:
+        a, b = b, a + b
+        i += 1
+
+    return b
+
 
 # Main Function
 def main():
@@ -30,24 +36,25 @@ def main():
     # Error
     except:
         print("Bad input.")
-        return # Exits function
-    
+        return  # Exits function
+
     # Calculations
     fibSeq = fibGen(userInput)
 
     # Using a generator to display the Fibonacci Sequence
     for fibNum in fibSeq:
         print(fibNum)
-        
-    return # Exits function
+
+    return  # Exits function
+
 
 # Execution Check
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Main loop
     while True:
         main()
-        userInput = input("Press q to quit: ") # Prompt
-        if userInput.lower() == 'q':
-            break # Ends loop
-        print() # Formatting
-    quit() # Exits program
+        userInput = input("Press q to quit: ")  # Prompt
+        if userInput.lower() == "q":
+            break  # Ends loop
+        print()  # Formatting
+    quit()  # Exits program
