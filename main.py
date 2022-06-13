@@ -1,21 +1,23 @@
-# Made by Alex
+#Made by Alex
 
-# Fibonacci Sequence Generator
+#======Libraries======
+
+#======Functions======
+#Fibonacci Sequence Generator
 def fibGen(value):
     for i in range(value):
         yield fib(i)
 
-
-# Get Fibonacci number at value
+#Get Fibonacci number at value
 def fib(value):
-    # Base case
+    #Base case
     if value == 0:
         return 0
     elif value == 1:
         return 1
-
-    # General case
-    i = 2  # i = 2 because the first 2 cases are special and are already handled by if-elif block
+    
+    #General case
+    i = 2  #i = 2 because the first 2 cases are special and are already handled by if-elif block
     a, b = 0, 1
 
     while i <= value:
@@ -24,37 +26,35 @@ def fib(value):
 
     return b
 
-
-# Main Function
+#======Main======
 def main():
-    # Error handling
+    #Error handling
     try:
         userInput = -1
 
         while userInput < 0:
             userInput = int(input("Please enter a whole number: "))
-    # Error
+    #Error
     except:
         print("Bad input.")
-        return  # Exits function
+        return #Exits function
 
-    # Calculations
+    #Calculations
     fibSeq = fibGen(userInput)
 
-    # Using a generator to display the Fibonacci Sequence
+    #Using a generator to display the Fibonacci Sequence
     for fibNum in fibSeq:
         print(fibNum)
+    
+    return #Exits function
 
-    return  # Exits function
-
-
-# Execution Check
+#======Execution Check======
 if __name__ == "__main__":
-    # Main loop
+    #Main loop
     while True:
         main()
-        userInput = input("Press q to quit: ")  # Prompt
+        userInput = input("Press q to quit: ") #Prompt
         if userInput.lower() == "q":
-            break  # Ends loop
-        print()  # Formatting
-    quit()  # Exits program
+            break #Ends loop
+        print() #Formatting
+    quit() #Exits program
